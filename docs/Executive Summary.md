@@ -10,8 +10,8 @@ Built an end-to-end customer experience analytics platform on Databricks coverin
 
 **Three findings stand out:**
 
-1. **Reliability drives 69.5% of negative survey sentiment** — the single largest detractor lever, ahead of pricing (54%) and far ahead of support quality (26%).
-2. **72% of customers are in a misaligned service tier** — over half need upgrades, ~17% can be downgraded for cost efficiency.
+1. **Reliability drives 60.6% of negative survey sentiment** — the single largest detractor lever, ahead of pricing (53.9%) and far ahead of support quality (25.8%).
+2. **79.8% of customers are in a misaligned service tier** — the majority need upgrades, ~17% can be downgraded for cost efficiency.
 3. **The "Silent Majority" segment is the biggest hidden risk** — 46% of the customer base, heavy product users, near-zero VoC engagement. The current model has no signal into their satisfaction state.
 
 **Recommended next step:** Pilot a tier-restructured service program targeting the top 100 high-ARR upgrade candidates over a 6-month window with NPS lift and churn reduction as primary success metrics.
@@ -60,10 +60,10 @@ This project synthesizes those data streams into a single platform with:
 
 | Segment | Size | % of base | Profile |
 |---|---|---|---|
-| **Silent Majority** | 23,110 | 46% | Heavy product users, near-zero survey response |
-| **Dormant / Disengaged** | 9,544 | 19% | No active instruments, minimal test volume |
-| **Strategic Champions** | 8,733 | 17% | High instrument count, vocal in VoC |
-| **At-Risk High-Touch** | 8,613 | 17% | 3.62 friction events/customer — 2x the rest |
+| **Silent Majority** | 23,077 | 46% | Heavy product users, near-zero survey response |
+| **Dormant / Disengaged** | 9,548 | 19% | No active instruments, minimal test volume |
+| **Strategic Champions** | 8,732 | 17% | High instrument count, vocal in VoC |
+| **At-Risk High-Touch** | 8,643 | 17% | 3.62 friction events/customer — ~2x baseline (1.86) |
 
 The **At-Risk High-Touch** segment carries 97% friction penetration — nearly every customer in this group has experienced a Critical or High-priority support ticket. This is the segment where service intervention has the highest ROI.
 
@@ -73,7 +73,7 @@ Theme classification of 23,000 open-text comments revealed:
 
 | Theme | Avg NPS | % Negative |
 |---|---|---|
-| **Reliability** | 5.49 | **69.5%** |
+| **Reliability** | 5.49 | **60.6%** |
 | **Pricing** | 5.99 | 53.9% |
 | Training | 6.76 | 37.2% |
 | Support Quality | 7.39 | 25.8% |
@@ -98,11 +98,11 @@ The customer satisfaction problem is not gradual erosion; it is a **post-honeymo
 
 Across the current Bronze / Silver / Gold tiers, average ARR is essentially flat (~$66K across all three). High-value accounts are scattered indiscriminately. When tier recommendations are derived from segment + propensity + ARR:
 
-- **72% of customers are in a misaligned tier**
-- **27,444 customers (55%) are recommended for upgrade**
-- **8,588 customers (17%) can be downgraded** for service cost efficiency
+- **79.8% of customers are in a misaligned tier**
+- **The majority are recommended for upgrade**
+- **~17% can be downgraded** for service cost efficiency
 
-The largest upgrade pool by ARR is the **Silent Majority** ($901M+ in recommended Gold/Platinum upgrades) — heavy users who are silently disengaged from VoC channels.
+The total upgrade pool represents **$2.64B in at-risk ARR**, concentrated heavily in the **Silent Majority** — heavy users who are silently disengaged from VoC channels.
 
 ---
 
@@ -110,7 +110,7 @@ The largest upgrade pool by ARR is the **Silent Majority** ($901M+ in recommende
 
 ### Scope
 
-Begin with the **top 100 high-ARR upgrade candidates** as a pilot wedge. This cohort represents an estimated $400M+ in ARR concentrated in the At-Risk High-Touch and Strategic Champions segments — the segments where intervention has the clearest behavioral signal.
+Begin with the **top 100 high-ARR upgrade candidates** as a pilot wedge — a focused cohort drawn from the At-Risk High-Touch and Strategic Champions segments, where intervention has the clearest behavioral signal. This wedge is a small, high-value slice of the broader $2.64B upgrade pool, sized to be operationally manageable in a single pilot window.
 
 ### Pilot structure (6-month window)
 
@@ -135,11 +135,11 @@ Begin with the **top 100 high-ARR upgrade candidates** as a pilot wedge. This co
 
 ## Limitations
 
-This project was built on synthetic data; the magnitudes (e.g., 72% misalignment rate) reflect characteristics of the test dataset and would differ on production data. Specifically:
+This project was built on synthetic data; the magnitudes (e.g., the 79.8% misalignment rate) reflect characteristics of the test dataset and would differ on production data. Specifically:
 
 - **Detractor risk model** showed modest absolute differentiation across customers on synthetic data; real-world data with stronger feature-target relationships is expected to produce clearer separation.
 - **Theme-by-segment correlation was flat** in synthetic data because comment generation was independent of behavioral clustering. Real data should reveal segment-specific complaint patterns.
-- **Current tier assignment was effectively random** in the synthetic data, inflating the misalignment rate. Real production data with historically-assigned tiers would likely show 15–25% misalignment, not 72%.
+- **Current tier assignment was effectively random** in the synthetic data, inflating the misalignment rate. Real production data with historically-assigned tiers would likely show 15–25% misalignment, not 79.8%.
 
 **The pipeline, methodology, and analytic patterns are transferable;** the headline magnitudes are data-dependent and should be re-derived on production data before any pilot decision.
 
